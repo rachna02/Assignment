@@ -1,0 +1,39 @@
+<p id="p2">
+    <button (click)="logout()" class="btn btn-primary">
+    <span style="font-size: small;">
+        <i class="fas fa-power-off"></i>
+    </span>
+    Logout
+    </button>
+</p>
+<p id="p1">
+    Welcome! {{user_name}}
+</p>
+<nav class="nav nav-pills nav-fill">
+    <a routerLink="/librarian-add-book" class="nav-item nav-link">Add Book</a>
+    <a routerLink="/librarian-add-student" class="nav-item nav-link">Add Student</a>
+    <a routerLink="/librarian-issue-book" class="nav-item nav-link active">Issue Books to students</a>
+    <a routerLink="/librarian-view-record" class="nav-item nav-link">View Records</a>
+</nav>
+Incoming requests for Issuing books by the students<br><br>
+  <table border="5px">   
+      <tr>
+        <th>Student Id</th>
+        <th>Student name</th>
+        <th>Book name</th>
+        <th>Issue date</th>
+        <th>Return date</th>
+        <th>Response</th>
+      </tr>
+     
+    <tr *ngFor="let transaction of transactions">         
+        <td *ngIf="!transaction.isIssued">{{transaction.id}}</td>
+        <td *ngIf="!transaction.isIssued">{{transaction.name}}</td>
+        <td *ngIf="!transaction.isIssued">{{transaction.book}}</td>
+        <td *ngIf="!transaction.isIssued">{{transaction.issueDate|date}}</td>
+        <td *ngIf="!transaction.isIssued">{{transaction.returnDate|date}}</td>
+        <td *ngIf="!transaction.isIssued">
+            <button type="button" (click)="submit(transaction)" class="btn btn-primary">Issue book</button>
+        </td>
+    </tr>
+</table>

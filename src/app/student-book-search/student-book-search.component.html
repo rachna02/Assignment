@@ -1,0 +1,77 @@
+<p id="p2">
+    <button (click)="logout()" class="btn btn-primary">
+    <span style="font-size: small;">
+        <i class="fas fa-power-off"></i>
+    </span>
+    Logout
+    </button>
+</p>
+<p id="p1">
+    Welcome! {{name}}
+</p>
+<nav class="nav nav-pills nav-fill">
+    <a routerLink="/student-book-search" class="nav-item nav-link active">Search a Book</a>
+    <a routerLink="/student-issue-book" class="nav-item nav-link">Issue a Book</a>
+    <a routerLink="/student-issue-status" class="nav-item nav-link">Check status of request to issue book</a>
+    <a routerLink="/student-return-book" class="nav-item nav-link">Return book</a>
+    <a routerLink="/student-change-password" class="nav-item nav-link">Change Password</a>
+</nav>
+<form>
+    <div class="container">  
+        <div class="form-group">
+            Book name:  <input type="text"  class="form-control" placeholder="Book name" [(ngModel)]="id" name="id" id="id" required minlength="3" #isvalidb="ngModel">
+            <div id="required" *ngIf="isvalidb.errors?.required"> 
+                Book required. 
+            </div>
+            <div id="required" *ngIf="isvalidb.errors?.minlength"> 
+                Enter the book name
+            </div> 
+        </div>
+        <button type="button" (click)="submit(id)"  class="btn btn-primary">Submit</button> 
+    </div>
+</form>
+
+        <div [hidden]="!showAllBooks">
+                <div class="container">
+                        <div class="row">
+                            <div *ngFor="let book of books| paginate: { itemsPerPage: 3, currentPage: p }">
+                                <div class="col-sm">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top"  [src]="book.book_cover" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Book name:{{ book.id }}</h5>
+                                            <p class="card-text">Book author:{{book.author}}<br></p>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                </div>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+        <div [hidden]="!bookAvailable">
+           
+                <div class="container">
+                        <div class="row">                        
+                                <div *ngFor="let index of indexArray">
+                                        <div class="col-sm">
+                                            <div class="card" style="width: 18rem;">
+                                                    <img class="card-img-top"  [src]="books[index].book_cover" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Book name:{{ books[index].id }}</h5>
+                                                        <p class="card-text">Book author:{{books[index].author}}<br></p>                                                   
+                                                    </div>
+                                            </div>
+                                        </div>
+                                </div>
+                         </div>
+                </div>
+        </div>
+  <p [hidden]="!bookNotAvailable" class="alert alert-danger">
+    The book is not available in library.
+  </p>
+  <p [hidden]="!noCopiesAvaiable" class="alert alert-danger">
+    The library has this book but currently all the books are issued.
+  </p>
+ 

@@ -1,0 +1,51 @@
+<p id="p2"><button (click)="logout()" class="btn btn-primary">
+    <span style="font-size: small;">
+        <i class="fas fa-power-off"></i>
+    </span>
+    Logout</button>
+</p>
+
+<p id="p1">
+    Welcome! {{name}}
+</p>
+
+<nav class="nav nav-pills nav-fill">
+    <a routerLink="/student-book-search" class="nav-item nav-link">Search a Book</a>
+    <a routerLink="/student-issue-book" class="nav-item nav-link active">Issue a Book</a>
+    <a routerLink="/student-issue-status" class="nav-item nav-link">Check status of request to issue book</a>
+    <a routerLink="/student-return-book" class="nav-item nav-link">Return book</a>
+    <a routerLink="/student-change-password" class="nav-item nav-link">Change Password</a>
+</nav>
+
+<form>
+    <div class="container">
+        <div class="form-group">
+            <label for="book"> Select Book: </label>
+            <select name="book"  class="form-control" id="book" [(ngModel)]="book">
+                <option hidden>Please select a book</option>
+                <option *ngFor="let b of books">{{b.id}}</option>
+            </select>
+        </div>
+        Enter issue date:
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" [min]="minDate"   required placeholder="Choose a date" [(ngModel)]="issueDate" name="issueDate" id="issueDate"  #isvalidb="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field><br>
+        Enter Return date:
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker1" [min]="minDate"  required placeholder="Choose a date" [(ngModel)]="returnDate" name="returnDate" id="returnDate"  #isvalidb="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field><br>
+
+        <button type="button" class="btn btn-primary" (click)="submit(id,issueDate,returnDate)" >Submit</button>
+    </div>
+</form>
+
+<p [hidden]="!cannotIssueBook" class="alert alert-danger">
+    You cannot issue the book as you currently have issued some other book, you can issue this book only when you return the previous one.
+</p>
+<p [hidden]="!requestPlacedSuccessfully" class="alert alert-success">Your request for the book {{book}} has been placed successfully.
+</p>
+<p [hidden]="!enterAllInformation" class="alert alert-danger">Please enter all the information</p>

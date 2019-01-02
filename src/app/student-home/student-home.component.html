@@ -1,0 +1,16 @@
+<p id="p2"><button (click)="logout()" class="btn btn-primary">
+    <span style="font-size: small;">
+        <i class="fas fa-power-off"></i>
+    </span>
+    Logout</button>
+</p>
+<p id="p1">
+    Welcome! {{name}}
+</p>
+<nav class="nav nav-pills nav-fill">
+    <a routerLink="/student-book-search" class="nav-item nav-link">Search a Book</a>
+    <a routerLink="/student-issue-book" class="nav-item nav-link">Issue a Book</a>
+    <a routerLink="/student-issue-status" class="nav-item nav-link">Check status of request to issue book</a>
+    <a routerLink="/student-return-book" class="nav-item nav-link">Return book</a>
+    <a routerLink="/student-change-password" class="nav-item nav-link">Change Password</a>
+</nav>

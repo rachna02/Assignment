@@ -1,0 +1,11 @@
+{
+    "UserName": "User name:",
+    "Password": "Password:",
+    "LibrarianLogin":"Librarian Login",
+    "StudentLogin":"Student Login",
+    "Submit":"Submit",
+    "UserNamePlaceholder":"User Name",
+    "PasswordPlaceholder":"Password",
+    "title":"Library Management System",
+    "InvalidCredentials":"Please enter the correct user-name and password"
+}

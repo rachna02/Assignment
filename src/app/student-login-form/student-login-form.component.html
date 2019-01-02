@@ -1,0 +1,25 @@
+<body>
+  <div id="div1">
+    <img src="../assets/library.jpg">
+  </div>
+  <nav class="nav nav-pills nav-fill">
+    <a routerLink="/librarian-login" class="nav-item nav-link">Librarian Login</a>
+    <a routerLink="/student-login" class="nav-item nav-link active">Student Login</a>
+    </nav>
+  <div>
+  <br><br>
+  <form>
+  <div class="container">
+    <div class="form-group">       
+      Student Id:  <input type="text"  class="form-control" placeholder="Student Id" [(ngModel)]="id" name="id" required><br><br>
+    </div>     
+    <div class="form-group">       
+      Password:  <input type="text"  class="form-control" placeholder="Password" [(ngModel)]="password"type="password" name="password" required><br><br>
+    </div>   
+      <button type="button" (click)="login()"  class="btn btn-primary">Login</button>
+    </div>
+  </form>
+  </div>
+  <p [hidden]='!invalidCredentials' class="alert alert-danger">Please enter correct student id and password.
+  </p>
+</body>

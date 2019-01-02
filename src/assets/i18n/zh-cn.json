@@ -1,0 +1,11 @@
+{
+    "UserName": "用户名:",
+    "Password": "密码:",
+    "LibrarianLogin":"图书馆员登录",
+    "StudentLogin":"学生登录",
+    "Submit":"提交",
+    "UserNamePlaceholder":"用户名",
+    "PasswordPlaceholder":"密码",
+    "title":"图书馆管理系统",
+    "InvalidCredentials":"请输入正确的用户名和密码"
+}
