@@ -6,12 +6,6 @@ import {Router} from '@angular/router';
 import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
-
-
-
-
-
 @Component({
   selector: 'app-student-return-book',
   templateUrl: './student-return-book.component.html',
@@ -78,30 +72,16 @@ export class StudentReturnBookComponent implements OnInit {
     }
   );
 
-
-
-
-
-
-
   },
   err => {
     console.log(err);
  }
 );
-
 }
 
 openModal(template: TemplateRef<any>) {
   this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
 }
-
-
-
-
-
-
-
 }
 
 
