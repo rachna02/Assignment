@@ -1,16 +1,14 @@
 <p id="p2">
     <button (click)="logout()" class="btn btn-primary">
-        <span style="font-size: small;">
-            <i class="fas fa-power-off"></i>
-        </span>
-        Logout
-        </button>
+    <span style="font-size: small;">
+        <i class="fas fa-power-off"></i>
+    </span>
+    Logout
+    </button>
 </p>
-
 <p id="p1">
     Welcome! {{name}}
 </p>
-
 <nav class="nav nav-pills nav-fill">
     <a routerLink="/student-book-search" class="nav-item nav-link">Search a Book</a>
     <a routerLink="/student-issue-book" class="nav-item nav-link">Issue a Book</a>
@@ -18,7 +16,6 @@
     <a routerLink="/student-return-book" class="nav-item nav-link active">Return book</a>
     <a routerLink="/student-change-password" class="nav-item nav-link">Change Password</a>
 </nav><br>
-
 <table border="5px">
     <tr>
         <th>Student Id</th>
@@ -28,7 +25,6 @@
         <th>Return date</th>
         <th>Return Book</th>
     </tr>
-
     <tr>
         <td *ngIf="transaction.isIssued">{{transaction.id}}</td>
         <td *ngIf="transaction.isIssued">{{transaction.name}}</td>
@@ -40,10 +36,8 @@
         </td>
     </tr>
 </table>
-
 <p [hidden]='!bookReturnedSuccessfully' class="alert alert-success" >Book returned successfully.
 </p>
-
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Return Book</h4>
@@ -51,7 +45,6 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
     <div class="modal-body">
         Do you really want to return the book?
     </div>

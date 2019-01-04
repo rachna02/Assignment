@@ -1,14 +1,13 @@
-<p id="p2"><button (click)="logout()" class="btn btn-primary">
+<p id="p2">
+    <button (click)="logout()" class="btn btn-primary">
     <span style="font-size: small;">
         <i class="fas fa-power-off"></i>
     </span>
     Logout</button>
 </p>
-
 <p id="p1">
     Welcome! {{name}}
 </p>
-
 <nav class="nav nav-pills nav-fill">
     <a routerLink="/student-book-search" class="nav-item nav-link">Search a Book</a>
     <a routerLink="/student-issue-book" class="nav-item nav-link active">Issue a Book</a>
@@ -16,7 +15,6 @@
     <a routerLink="/student-return-book" class="nav-item nav-link">Return book</a>
     <a routerLink="/student-change-password" class="nav-item nav-link">Change Password</a>
 </nav>
-
 <form>
     <div class="container">
         <div class="form-group">
@@ -42,7 +40,6 @@
         <button type="button" class="btn btn-primary" (click)="submit(id,issueDate,returnDate)" >Submit</button>
     </div>
 </form>
-
 <p [hidden]="!cannotIssueBook" class="alert alert-danger">
     You cannot issue the book as you currently have issued some other book, you can issue this book only when you return the previous one.
 </p>

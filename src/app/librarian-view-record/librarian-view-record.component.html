@@ -7,7 +7,7 @@
     </button>
 </p>
 <p id="p1">
-    Welcome! {{user_name}}
+    Welcome! {{userName}}
 </p>
 <nav class="nav nav-pills nav-fill">
     <a routerLink="/librarian-add-book" class="nav-item nav-link">Add Book</a>
@@ -15,7 +15,7 @@
     <a routerLink="/librarian-issue-book" class="nav-item nav-link ">Issue Books to students</a>
     <a routerLink="/librarian-view-record" class="nav-item nav-link active">View Records</a>
 </nav>
-Record of books currently issued by {{user_name}}<br><br>
+Record of books currently issued by {{userName}}<br><br>
 <table border="5px">
     <tr>
         <th>Student Id</th>
@@ -24,7 +24,6 @@ Record of books currently issued by {{user_name}}<br><br>
         <th>Issue date</th>
         <th>Return date</th>
     </tr>   
-
     <tr *ngFor="let transaction of transactions">     
         <td *ngIf="transaction.isIssued">{{transaction.id}}</td>
         <td *ngIf="transaction.isIssued">{{transaction.name}}</td>

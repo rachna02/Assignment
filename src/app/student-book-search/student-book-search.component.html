@@ -30,43 +30,40 @@
         <button type="button" (click)="submit(id)"  class="btn btn-primary">Submit</button> 
     </div>
 </form>
-
         <div [hidden]="!showAllBooks">
                 <div class="container">
-                        <div class="row">
-                            <div *ngFor="let book of books| paginate: { itemsPerPage: 3, currentPage: p }">
-                                <div class="col-sm">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top"  [src]="book.book_cover" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Book name:{{ book.id }}</h5>
-                                            <p class="card-text">Book author:{{book.author}}<br></p>                                           
-                                        </div>
+                    <div class="row">
+                        <div *ngFor="let book of books| paginate: { itemsPerPage: 3, currentPage: page }">
+                            <div class="col-sm">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top"  [src]="book.bookCover" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Book name:{{ book.id }}</h5>
+                                        <p class="card-text">Book author:{{book.author}}<br></p>                                           
                                     </div>
                                 </div>
                             </div>
-                         </div>
+                        </div>
+                    </div>
                 </div>
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </div>
-
-        <div [hidden]="!bookAvailable">
-           
-                <div class="container">
-                        <div class="row">                        
-                                <div *ngFor="let index of indexArray">
-                                        <div class="col-sm">
-                                            <div class="card" style="width: 18rem;">
-                                                    <img class="card-img-top"  [src]="books[index].book_cover" alt="Card image cap">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Book name:{{ books[index].id }}</h5>
-                                                        <p class="card-text">Book author:{{books[index].author}}<br></p>                                                   
-                                                    </div>
-                                            </div>
-                                        </div>
-                                </div>
-                         </div>
+        <div [hidden]="!bookAvailable">     
+            <div class="container">
+                <div class="row">                        
+                    <div *ngFor="let index of indexArray">
+                        <div class="col-sm">
+                            <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top"  [src]="books[index].bookCover" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Book name:{{ books[index].id }}</h5>
+                                        <p class="card-text">Book author:{{books[index].author}}<br></p>                                                   
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
   <p [hidden]="!bookNotAvailable" class="alert alert-danger">
     The book is not available in library.

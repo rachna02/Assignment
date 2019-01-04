@@ -14,10 +14,10 @@ import {StudentReturnBookComponent} from './student-return-book/student-return-b
 import {LibrarianViewRecordComponent} from './librarian-view-record/librarian-view-record.component'
 import {StudentChangePasswordComponent} from './student-change-password/student-change-password.component';
 export const routes: Routes = [
-  { path: '', redirectTo: '/librarian-login', pathMatch: 'full' },
-  { path: 'librarian-login', component: LibrarianLoginFormComponent },
-  { path: 'student-login', component: StudentLoginFormComponent },
-  { path: 'librarian-home', component: LibrarianHomeComponent },
+  {path: '', redirectTo: '/librarian-login', pathMatch: 'full' },
+  {path: 'librarian-login', component: LibrarianLoginFormComponent },
+  {path: 'student-login', component: StudentLoginFormComponent },
+  {path: 'librarian-home', component: LibrarianHomeComponent },
   {path: 'librarian-add-book', component: LibrarianAddBookComponent },
   {path:'librarian-add-student',component:LibrarianAddStudentComponent},
   {path:'student-home',component:StudentHomeComponent},
@@ -28,11 +28,8 @@ export const routes: Routes = [
   {path:'student-return-book',component:StudentReturnBookComponent},
   {path:'librarian-view-record',component:LibrarianViewRecordComponent},
   {path:'student-change-password',component:StudentChangePasswordComponent}
-
 ];
-
 @NgModule({
- 
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {Book} from '../book';
+import {Book} from 'src/models/book';
 import {ApiCommunicationService} from '../api-communication.service';
 @Component({
   selector: 'app-librarian-add-book',
@@ -9,70 +9,82 @@ import {ApiCommunicationService} from '../api-communication.service';
   providers:[ApiCommunicationService]
 })
 export class LibrarianAddBookComponent implements OnInit {
-
-  book1 = new Book(); 
+  book = new Book(); 
   id:string;
-  book_name:string;
+  bookName:string;
   author: string;
-  book_cover:any;
-  isvalid:boolean;
+  bookCover:any;
+  isValid:boolean;
   url:ArrayBuffer;
   file:File;
   imageShow: any= '';
   copies:number;
   bookAddedSuccessfully:boolean=false;
   constructor(private router: Router,private api:ApiCommunicationService) { }
-  user_name:string;
+  userName:string;
+  /**
+   * It is used to get the username of the logged-in user
+   * if the user is not logged in he will be redirected to the log-in 
+   * page
+   */
   ngOnInit() {
-    this.user_name=localStorage.getItem('user_name');
-     if(this.user_name==null)
+    this.userName=localStorage.getItem('userName');
+     if(this.userName==null)
      this.router.navigate(['']);
   }
+  /**
+   * Used by the librarian to log out from the application
+   */
   logout():void{
-    localStorage.removeItem('user_name');
+    localStorage.removeItem('userName');
     this.router.navigate(['librarian-login']);
   }
-
-onFileChanged(event) {
-  this.file = event.target.files[0]
-  var reader = new FileReader();
-  reader.readAsDataURL(event.target.files[0]);
-  reader.onload = (event) => {
-  this.imageShow = (<FileReader>event.target).result;
+  /**
+   * It is used to convert the image into its base64 Format
+   * @param event User action of pushing the button 'Choose File'
+   */
+  onFileChanged(event) {
+    this.file = event.target.files[0]
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event) => {
+    this.imageShow = (<FileReader>event.target).result;
  }
 }
+  /**
+   * It is used to post the data collected from the form to the server
+   * @param data Data collected from the form
+   */
   submit(data):void
   {
-    this.isvalid=false;
+    this.isValid=false;
     this.id=data.id;
     this.author=data.author;
-    this.book_cover=data.book_cover;
+    this.bookCover=data.bookCover;
     this.copies=data.copies;
-    if(this.author.length>0 && data.book_cover && data.id && data.copies)
+    if(this.author.length>0 && this.id.length>0 && this.copies)
     {
-      this.isvalid=true;
+      console.log(this.author);
+      this.isValid=true;
     }
     else
     {
-      this.isvalid=false;
+      this.isValid=false;
     }
-    if(this.isvalid==true)
+    if(this.isValid==true)
     {
-      this.book1.id= this.id; 
-      this.book1.author=this.author;
-      this.book1.book_cover=this.imageShow;
-      this.book1.copies=this.copies;
-      this.api.postBooks(this.book1).subscribe(
-      book => {
-        console.log(book);
+      this.book.id= this.id; 
+      this.book.author=this.author;
+      this.book.bookCover=this.imageShow;
+      this.book.copies=this.copies;
+      this.api.postBooks(this.book).subscribe(
+      book => {  
         this.bookAddedSuccessfully=true;  
       },
       err => {
         console.log(err);
       }
       );
-      //this.router.navigate(["librarian-home"]);
     }
-    console.log(data);
   }
 }

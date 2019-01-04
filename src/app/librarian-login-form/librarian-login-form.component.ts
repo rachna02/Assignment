@@ -7,24 +7,31 @@ import {Router} from '@angular/router';
   styleUrls: ['./librarian-login-form.component.scss']
 })
 export class LibrarianLoginFormComponent implements OnInit {
-
   constructor(private router: Router,private translate: TranslateService) { 
     translate.setDefaultLang('en');
   }
-
-user_name:string;
+userName:string;
 password:string;
 incorectCredentials:boolean=false;
   ngOnInit() {
   }
+  /**
+   * It is used to swtch the language from English to Chinese
+   * and vis -a -vis
+   * @param language The language preferred by the librarian
+   */
   switchLanguage(language: string) {
     this.incorectCredentials=false;
     this.translate.use(language);
   }
-
+  /**
+   * It is used to log-in the application by the librarian
+   * @param data The credentials passed by the librarian while 
+   * logging in
+   */
   login(data) : void {
-    if(data.user_name == 'anuradha' && data.password == 'anuradha'){
-      localStorage.setItem('user_name',this.user_name);
+    if(data.userName == 'anuradha' && data.password == 'anuradha'){
+      localStorage.setItem('userName',this.userName);
       this.router.navigate(["librarian-home"]);
     }else {
       this.incorectCredentials=true;

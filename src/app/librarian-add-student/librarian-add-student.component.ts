@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Student} from '../student';
+import {Student} from 'src/models/student';
 import {ApiCommunicationService} from '../api-communication.service';
 import {Router} from '@angular/router';
 
@@ -12,46 +12,53 @@ import {Router} from '@angular/router';
 export class LibrarianAddStudentComponent implements OnInit {
 
   myForm: FormGroup;
-  student1 = new Student(); 
-  student2 = new Student(); 
+  student = new Student();  
   isvalid:boolean;
   url:ArrayBuffer;
   s:string;
   studentAddedSuccessfully:boolean=false;
-  user_name:string;
+  userName:string;
   constructor(private fb: FormBuilder,private router: Router,private api:ApiCommunicationService) {}
-
+  /**
+   * It is used to validate the information filled in the form
+   * It is used to get the username of the logged-in user
+   * if the user is not logged in he will be redirected to the log-in 
+   * page
+   */
   ngOnInit() {
    this.myForm = this.fb.group({
      id: ['', Validators.required],
      name: ['', Validators.required],
      password: ['', Validators.required]
      });
-     this.user_name=localStorage.getItem('user_name');
-    if(this.user_name==null)
+     this.userName=localStorage.getItem('userName');
+    if(this.userName==null)
      this.router.navigate(['']);
   }
-
+  /**
+   * Used by the librarian to log out from the application
+   */
   logout():void{
-    localStorage.removeItem('user_name');
+    localStorage.removeItem('userName');
     this.router.navigate(['librarian-login']);
   }
-
-  submit(studentName:string,userName:string,password:string):void
+  /**
+  * Used to post the student information collected in the form 
+  * to the server
+  */
+  submit():void
   { 
-    this.student1.id=this.myForm.get('id').value;
-    this.student1.name=this.myForm.get('name').value;
-    this.student1.password=this.myForm.get('password').value;
-    this.api.postStudent(this.student1).then(
+    this.student.id=this.myForm.get('id').value;
+    this.student.name=this.myForm.get('name').value;
+    this.student.password=this.myForm.get('password').value;
+    this.api.postStudent(this.student).then(
         student => {
           console.log(student);
-          this.studentAddedSuccessfully=true;
-         
+          this.studentAddedSuccessfully=true;    
         },
         err => {
           console.log(err);
         }
      );
-    //this.router.navigate(["librarian-home"]);
   }
 }

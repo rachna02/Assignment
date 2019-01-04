@@ -2,7 +2,6 @@
     <div id="div1">
         <img src="../assets/library.jpg">
     </div>
-
     <nav class="nav nav-pills nav-fill">
         <a routerLink="/librarian-login" id="selected" class="nav-item nav-link active">{{ 'LibrarianLogin' | translate }}</a>
         <a routerLink="/student-login" class="nav-item nav-link">{{ 'StudentLogin' | translate }}</a>
@@ -11,7 +10,7 @@
         <form #userlogin = "ngForm" (ngSubmit) = "login(userlogin.value)">
             <div class="container">
                 <div class="form-group">
-                    {{ 'UserName' | translate }} <input type="text"  class="form-control" placeholder="{{ 'UserNamePlaceholder' | translate }}" [(ngModel)]="user_name" name="user_name" required><br><br>
+                    {{ 'UserName' | translate }} <input type="text"  class="form-control" placeholder="{{ 'UserNamePlaceholder' | translate }}" [(ngModel)]="userName" name="userName" required><br><br>
                 </div>     
                 <div class="form-group">
                     {{ 'Password' | translate }} <input type="text"  class="form-control" placeholder="{{ 'PasswordPlaceholder' | translate }}" [(ngModel)]="password"type="password" name="password" required><br><br>
@@ -24,7 +23,6 @@
             &nbsp; 
             <button (click)="switchLanguage('zh-cn')" class="btn btn-primary">中文</button>
         </div>
-
         <p [hidden]='!incorectCredentials' class="alert alert-danger"> {{ 'InvalidCredentials' | translate }}
         </p>
     </div>

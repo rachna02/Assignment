@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiCommunicationService} from '../api-communication.service';
-import { Transaction } from '../Transacion';
-import {Book} from '../book';
+import { Transaction } from 'src/models/transacion';
+import {Book} from 'src/models/book';
 @Component({
   selector: 'app-librarian-issue-book',
   templateUrl: './librarian-issue-book.component.html',
@@ -12,12 +12,18 @@ export class LibrarianIssueBookComponent implements OnInit {
 
   transactions:Transaction[];
   books:Book[];
-  user_name:string;
+  userName:string;
   book=new Book();
   constructor(private router: Router,private api:ApiCommunicationService) { }
+  /**
+   * It is used to get the username of the logged-in user
+   * if the user is not logged in he will be redirected to the log-in 
+   * page
+   * It also gets the transactions from the server
+   */
   ngOnInit() {
-      this.user_name=localStorage.getItem('user_name');
-      if(this.user_name==null)
+      this.userName=localStorage.getItem('user_name');
+      if(this.userName==null)
       this.router.navigate(['']);
       this.api.getTransactions().then(
       transaction => {
@@ -28,12 +34,19 @@ export class LibrarianIssueBookComponent implements OnInit {
       }
     );
 }
-logout():void{
-  localStorage.removeItem('user_name');
-  this.router.navigate(['librarian-login']);
-}
-
-submit(transaction:Transaction):void{
+  /**
+   * Used by the librarian to log out from the application
+   */
+  logout():void{
+    localStorage.removeItem('userName');
+    this.router.navigate(['librarian-login']);
+  }
+  /**
+   * It updates the transaction and book information when a student
+   * issues a book 
+   * @param transaction Transaction of the student issuing a book
+   */
+  submit(transaction:Transaction):void{
     this.api.getBook(transaction.book).then(
     book => {
     this.book=book;
@@ -56,7 +69,7 @@ submit(transaction:Transaction):void{
         );
           book.id=book.id;
           book.author=book.author;
-          book.book_cover=book.book_cover;
+          book.bookCover=book.bookCover;
           book.copies=book.copies-1;
           this.api.updateBook(book).then(
           book1 => {

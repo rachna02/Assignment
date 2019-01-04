@@ -64,10 +64,4 @@ describe('LibrarianAddStudentComponent', () => {
     errors = password.errors || {};
     expect(errors['required']).toBeTruthy(); 
   });
-
-
-
-
- 
-  
 });

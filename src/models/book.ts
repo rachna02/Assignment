@@ -1,7 +1,7 @@
 export class Book {
   id:string;
   author: string;
-  book_cover:any;
+  bookCover:any;
   copies:number;
   constructor(){}
 }

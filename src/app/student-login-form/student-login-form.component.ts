@@ -13,25 +13,26 @@ export class StudentLoginFormComponent implements OnInit {
   invalidCredentials:boolean=false;
   ngOnInit() {
   }
+  /**
+   * It is used to log-in to the application by the student
+   */
   login() : void {
     this.api.getStudent(this.id).subscribe(
-    stu => {
-      if(stu.password==this.password)
-      {
-        console.log(stu.name);
-        localStorage.setItem('name',stu.name);
-        localStorage.setItem('id',stu.id);
-        this.router.navigate(["student-home"]);
+      student => {
+        if(student.password==this.password)
+        {
+          localStorage.setItem('name',student.name);
+          localStorage.setItem('id',student.id);
+          this.router.navigate(["student-home"]);
+        }
+        else
+        {
+          this.invalidCredentials=true;  
+        }   
+      },
+      err => {
+        this.invalidCredentials = true;
       }
-      else
-      {
-        this.invalidCredentials=true;  
-      }   
-  },
-  err => {
-    console.log(err);
-    this.invalidCredentials = true;
-  }
-  );   
+    );   
   }
 }

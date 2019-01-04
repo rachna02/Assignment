@@ -1,4 +1,5 @@
-<p id="p2"><button (click)="logout()" class="btn btn-primary">
+<p id="p2">
+  <button (click)="logout()" class="btn btn-primary">
     <span style="font-size: small;">
         <i class="fas fa-power-off"></i>
     </span>
@@ -6,7 +7,7 @@
     </button>
 </p>
 <p id="p1">
-  Welcome! {{user_name}}
+  Welcome! {{userName}}
 </p>
 <nav class="nav nav-pills nav-fill">
     <a routerLink="/librarian-add-book" class="nav-item nav-link">Add Book</a>
@@ -23,7 +24,6 @@
         please provide id for the student
       </div>
     </div>
-
     <div class="form-group">
       Student Name :
       <input type="text" class="form-control" formControlName="name" placeholder="Student name" name="name" id="name">
@@ -31,7 +31,6 @@
         please provide  the student name {{ myForm.get('name').value }}
       </div>
     </div>
-
     <div class="form-group">
       Password for the student {{ myForm.get('name').value }}
       <input formControlName="password" class="form-control" type="password" placeholder="Password"  name="password" id="password">
@@ -39,7 +38,7 @@
       please provide a Password for the student {{ myForm.get('name').value }}
       </div>
     </div>
-    <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="submit(id,name,password)">
+    <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="submit()">
       Submit
     </button>
   </div>
