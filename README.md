@@ -1,27 +1,45 @@
-# Assignment
+# Library Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+An application  which is used to manage the catalog of a library. 
+It helps in keeping the records of whole transactions of the books available in the library. 
+Library Management System  is very easy to use and fulfills all the requirement of a librarian as well as a student.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Json-server is needed to get the project running. 
+Version:0.14.2
+License:MIT
+Link:https://github.com/typicode/json-server
 
-## Code scaffolding
+### Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Node.js 11.6.0
 
-## Build
+### Installing
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Commands to get the project running;
+1.npm install
+2.ng serve
 
-## Running unit tests
+## Running the tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Commands to run the tests:
+1.ng test
 
-## Running end-to-end tests
+### Usage
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Librarian:
+1.The librarian can log-in to the application with user-name: anuradha and password : anuradha.
+2.The librarian can change the language preference between English and Chinese.
+3.The librarian can add book information such as book name, author, number of copies of book and book cover.
+4.The librarian can add student information such as student id, name and password.
+5.The librarian can issue books to the students.
+6.The librarian can view records of students who have issued books.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Student:
+1.The student can log-in to the application with his student-id and the password as provided by the librarian.
+2.The student can search a book in the library.
+3.The student can raise a request to the librarian to issue a book from the library.
+4.The student can check the status of his request of issuing a book.
+5.The student can return the book to the library.
+6.The student can change his/her password.
