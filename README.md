@@ -7,8 +7,11 @@ Library Management System  is very easy to use and fulfills all the requirement 
 ## Getting Started
 
 Json-server is needed to get the project running. 
+
 Version:0.14.2
+
 License:MIT
+
 Link:https://github.com/typicode/json-server
 
 ### Prerequisites
@@ -18,12 +21,15 @@ Node.js 11.6.0
 ### Installing
 
 Commands to get the project running;
+
 1.npm install
+
 2.ng serve
 
 ## Running the tests
 
 Commands to run the tests:
+
 1.ng test
 
 ### Usage
